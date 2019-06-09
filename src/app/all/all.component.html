@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-9 col-md-11">
+    <div class="form-group">
+      <input #busquedainput type="text" class="form-control" placeholder="Search..." (keyup.enter)="search(busquedainput.value)">
+    </div>
+  </div>
+  <div class="col-2 col-md-1">
+    <button class="btn btn-primary" (click)= "search(busquedainput.value)"> Search</button>
+  </div>
+</div>
+<div class="card-columns">
+  <div class="card" style="width: 18rem; " *ngFor="let elemento of elementos" routerLink="{{detailsRoute(elemento)}}" style="cursor: pointer">
+    <img src="{{elemento.Poster}}" class="card-img-top" >
+    <div class="card-body">
+      <h5 class="card-title">{{elemento.Title}}</h5>
+      <p class="card-text"><small>{{elemento.Type}} - {{elemento.Year}}
+      </small></p>
+      
+    </div>
+  </div>
+</div>

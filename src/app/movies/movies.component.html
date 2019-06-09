@@ -1,0 +1,11 @@
+<div class="card-columns">
+  <div class="card" style="width: 18rem; " *ngFor="let elemento of elementos">
+    <img src="{{elemento.Poster}}" class="card-img-top" >
+    <div class="card-body">
+      <h5 class="card-title">{{elemento.Title}}</h5>
+      <p class="card-text"><small>{{elemento.Type}} - {{elemento.Year}}
+      </small></p>
+      
+    </div>
+  </div>
+</div>
