@@ -14,6 +14,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { SeriesComponent } from './series/series.component';
 import { MoviesDetailComponent } from './movies/movies-detail/movies-detail.component';
 import { SerieDetailComponent } from './series/serie-detail/serie-detail.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { SerieDetailComponent } from './series/serie-detail/serie-detail.compone
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

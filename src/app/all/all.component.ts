@@ -8,9 +8,11 @@ import { ApiService } from '../api.service';
 })
 export class AllComponent implements OnInit {
 
- elementos=[];
+ elementos:Array<any>;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+
+   }
 
   ngOnInit() {
     
@@ -29,10 +31,16 @@ export class AllComponent implements OnInit {
   }
   search(palabra){
     this.api.getAllApi(palabra).subscribe(
-      (elementos)=> {this.elementos=elementos},
+      (data)=> {console.log(data);this.elementos=data},
       (error)=> {console.log(error)}
     )
   }
-
+  onScrollDown(){
+    
+    this.api.getNextApi().subscribe(
+      (data)=> { this.elementos=this.elementos.concat(data); console.log(this.elementos)},
+      (error)=> {console.log(error)}
+    )
+  }
 
 }

@@ -8,14 +8,20 @@
     <button class="btn btn-primary" (click)= "search(busquedainput.value)"> Search</button>
   </div>
 </div>
-<div class="card-columns">
-  <div class="card" style="width: 18rem; " *ngFor="let elemento of elementos" routerLink="{{detailsRoute(elemento)}}" style="cursor: pointer">
-    <img src="{{elemento.Poster}}" class="card-img-top" >
-    <div class="card-body">
-      <h5 class="card-title">{{elemento.Title}}</h5>
-      <p class="card-text"><small>{{elemento.Type}} - {{elemento.Year}}
-      </small></p>
-      
+
+<div class="search-results"
+      infinite-scroll
+      (scrolled)="onScrollDown()"
+      >
+  <div class="card-columns">
+    <div class="card" style="width: 18rem; " *ngFor="let elemento of elementos" routerLink="{{detailsRoute(elemento)}}" style="cursor: pointer">
+      <img src="{{elemento.Poster}}" class="card-img-top" >
+      <div class="card-body">
+        <h5 class="card-title">{{elemento.Title}}</h5>
+        <p class="card-text"><small>{{elemento.Type}} - {{elemento.Year}}
+        </small></p>
+        
+      </div>
     </div>
   </div>
 </div>
