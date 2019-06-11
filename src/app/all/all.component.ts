@@ -9,6 +9,10 @@ import { ApiService } from '../api.service';
 export class AllComponent implements OnInit {
 
  elementos:Array<any>;
+ pagina=1;
+ cargando=false;
+ cargandoScroll=false;
+ error=false;
 
   constructor(private api: ApiService) {
 
@@ -30,17 +34,40 @@ export class AllComponent implements OnInit {
     
   }
   search(palabra){
-    this.api.getAllApi(palabra).subscribe(
-      (data)=> {console.log(data);this.elementos=data},
-      (error)=> {console.log(error)}
+    this.elementos=[];
+    this.cargando=true;
+    this.pagina=1;
+    this.api.getAllApi(palabra,this.pagina).subscribe(
+      (data)=> {
+        console.log(data);
+        this.elementos=data;
+        this.cargando=false;
+        this.error=false
+      },
+      (error)=> {
+        console.log(error); 
+        this.error=true;
+        this.cargando=false
+      }
     )
   }
-  onScrollDown(){
-    
-    this.api.getNextApi().subscribe(
-      (data)=> { this.elementos=this.elementos.concat(data); console.log(this.elementos)},
-      (error)=> {console.log(error)}
+  onScrollDown(palabra){
+    this.cargandoScroll=true;
+    this.pagina++;
+    this.api.getAllApi(palabra,this.pagina).subscribe(
+      (data)=> {
+        console.log(data);
+        this.elementos=this.elementos.concat(data);
+        this.cargandoScroll=false;
+      },
+      (error)=> {
+        console.log(error);
+        this.error=true;
+        this.cargando=false
+      }
     )
   }
-
+  changePoster(index){
+    this.elementos[index].Poster = "assets/img/placeholder.png"
+  }
 }

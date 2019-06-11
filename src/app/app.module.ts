@@ -15,6 +15,7 @@ import { SeriesComponent } from './series/series.component';
 import { MoviesDetailComponent } from './movies/movies-detail/movies-detail.component';
 import { SerieDetailComponent } from './series/serie-detail/serie-detail.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { WebsitePipe } from './website.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MoviesComponent,
     SeriesComponent,
     MoviesDetailComponent,
-    SerieDetailComponent
+    SerieDetailComponent,
+    WebsitePipe
   ],
   imports: [
     BrowserModule,

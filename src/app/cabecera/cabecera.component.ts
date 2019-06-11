@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
+  light = true;
   constructor() { }
 
   ngOnInit() {
+
+  }
+  setDark(){
+    this.light = false;
+  }
+  setLight(){
+    this.light = true;
   }
 
 }

@@ -4,14 +4,13 @@ import'rxjs/add/operator/map';
 @Injectable()
 export class ApiService{
      palabra="";
-     contador=2;
      peticion_en_curso=false;
      constructor(private http: Http){
         
      }
-     public getAllApi(palabra){
+     public getAllApi(palabra, pagina){
          this.palabra=palabra;
-         return this.http.get("http://www.omdbapi.com/?apikey=6040d029&s="+palabra).map(
+         return this.http.get("http://www.omdbapi.com/?apikey=6040d029&s="+palabra+"&page="+pagina).map(
              (respuesta)=>{return respuesta.json().Search}
          )
      }
@@ -25,15 +24,5 @@ export class ApiService{
             (respuesta)=>{return respuesta.json()}
         )
     }
-    public getNextApi(){
-        if(!this.peticion_en_curso){
-            this.peticion_en_curso=true;
-            return this.http.get("http://www.omdbapi.com/?apikey=6040d029&s="+this.palabra+"&page="+this.contador).map(
-            (respuesta)=>{this.contador++; this.peticion_en_curso=false; return respuesta.json().Search}
-            
-        )
-        }
-        
-        
-    }
+    
 }

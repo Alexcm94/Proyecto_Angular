@@ -9,7 +9,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class MoviesDetailComponent implements OnInit {
 
-  movie = {};
+  movie;
+  cargando = true;
 // ActivatedRoute sirve para acceder a los parámetros de la url
   constructor(private api : ApiService, private route : ActivatedRoute) { }
 
@@ -18,7 +19,7 @@ export class MoviesDetailComponent implements OnInit {
       (params : Params) => {
         const imdbID = params['imdbId'];
         this.api.getMovie(imdbID).subscribe(
-          (movie)=> {this.movie=movie},
+          (movie)=> {this.movie=movie; this.cargando=false},
           (error)=> {console.log(error)}
         )
       },
@@ -29,5 +30,7 @@ export class MoviesDetailComponent implements OnInit {
     )
     
   }
-
+  changeposter(){
+    this.movie.Poster = "assets/img/placeholder.png"
+  }
 }

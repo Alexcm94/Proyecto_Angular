@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand" [ngClass]="{'navbar-light bg-light' : light,' navbar-dark bg-dark': !light}">
   <a class="navbar-brand" >Movies</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,4 +17,6 @@
       
     </ul>
   </div>
+  <button class="btn btn-dark" *ngIf="light" (click)="setDark()"> Dark</button>
+  <button class="btn btn-light" *ngIf="!light"(click)="setLight()"> Light</button>
 </nav>
