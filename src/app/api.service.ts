@@ -14,8 +14,15 @@ export class ApiService{
              (respuesta)=>{return respuesta.json().Search}
          )
      }
-     public getAllApiMovies(){
-        return this.http.get("https://www.omdbapi.com/?type=movie&s=day&apikey=6040d029").map(
+     public getAllApiMovies(palabra, pagina){
+        this.palabra=palabra;
+        return this.http.get("https://www.omdbapi.com/?apikey=6040d029&s="+palabra+"&page="+pagina+"&type=movie").map(
+            (respuesta)=>{return respuesta.json().Search}
+        )
+    }
+    public getAllApiSeries(palabra, pagina){
+        this.palabra=palabra;
+        return this.http.get("https://www.omdbapi.com/?apikey=6040d029&s="+palabra+"&page="+pagina+"&type=series").map(
             (respuesta)=>{return respuesta.json().Search}
         )
     }

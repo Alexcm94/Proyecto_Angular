@@ -11,7 +11,7 @@ import { ApiService } from './api.service';
 //Para poder hacer peticiones http..
 import {HttpModule} from '@angular/http';
 import { MoviesComponent } from './movies/movies.component';
-import { SeriesComponent } from './series/series.component';
+//import { SeriesComponent } from './series/series.component';
 import { MoviesDetailComponent } from './movies/movies-detail/movies-detail.component';
 import { SerieDetailComponent } from './series/serie-detail/serie-detail.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -23,7 +23,7 @@ import { WebsitePipe } from './website.pipe';
     PieComponent,
     AllComponent,
     MoviesComponent,
-    SeriesComponent,
+   // SeriesComponent,
     MoviesDetailComponent,
     SerieDetailComponent,
     WebsitePipe

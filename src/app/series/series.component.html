@@ -1,3 +1,40 @@
-<p>
-  series works!
-</p>
+<div class="row">
+  <div class="col-9 col-md-11">
+    <div class="form-group">
+      <input #busquedainput type="text" class="form-control" placeholder="Search..." (keyup.enter)="search(busquedainput.value)">
+    </div>
+  </div>
+  <div class="col-2 col-md-1">
+    <button class="btn btn-primary" (click)= "search(busquedainput.value)"> Search</button>
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="cargando; else lista">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<ng-template #lista>
+  <div class="search-results"
+      infinite-scroll
+      (scrolled)="onScrollDown(busquedainput.value)"
+      >
+  <div class="row">
+    <div class="card col-12 col-md-3"  *ngFor="let elemento of elementos; let i= index;" routerLink="{{detailsRoute(elemento)}}" style="cursor: pointer">
+      <img src="{{elemento.Poster}}" class="card-img-top" (error)="changePoster(i)" >
+      <div class="card-body">
+        <h5 class="card-title">{{elemento.Title}}</h5>
+        <p class="card-text"><small>{{elemento.Type}} - {{elemento.Year}}
+        </small></p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="cargandoScroll">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+</ng-template>
+
+

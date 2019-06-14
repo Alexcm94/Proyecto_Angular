@@ -8,11 +8,11 @@ import { ApiService } from '../api.service';
 })
 export class AllComponent implements OnInit {
 
- elementos:Array<any>;
- pagina=1;
- cargando=false;
- cargandoScroll=false;
- error=false;
+  elementos:Array<any>;
+  pagina=1;
+  cargando=false;
+  cargandoScroll=false;
+  error=false;
 
   constructor(private api: ApiService) {
 
